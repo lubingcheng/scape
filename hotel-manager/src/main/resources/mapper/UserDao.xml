@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhl.hotelmanager.dao.UserDao">
+    <resultMap id="result" type="com.lhl.hotelmanager.entity.RegisterUser">
+        <result property="openId" column="openId"></result>
+        <result property="dateTime" column="dateTime"></result>
+    </resultMap>
+
+    <select id="FindUserByOpenId"   parameterType="String"   resultType="com.lhl.hotelmanager.entity.RegisterUser"  >
+        select * from register_user where openId=#{openId}
+    </select>
+
+    <insert id="InsertRegisterUser" parameterType="com.lhl.hotelmanager.entity.RegisterUser">
+      INSERT INTO register_user
+      (
+          id,openId,mapId,payId,dateTime,IsUsed
+      )
+      VALUES (
+          #{id},
+          #{openId},
+          #{mapId},
+          #{payId},
+          #{dateTime},
+          #{IsUsed}
+      )
+   </insert>
+
+
+</mapper>
