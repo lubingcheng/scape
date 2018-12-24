@@ -62,6 +62,10 @@ public class IndexController {
         return  "test";
     }
 
+    @RequestMapping(value = {"/admin"})
+    public String admin(HttpServletRequest request){
+        return  "admin";
+    }
 
     /**
      * 默认页<br/>
