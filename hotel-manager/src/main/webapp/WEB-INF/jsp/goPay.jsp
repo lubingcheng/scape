@@ -46,7 +46,7 @@
             <input type="hidden" id="openId" value="${openId}">
         </form>
         <div class="panel">
-            游乐通提供景区游览地图，可搜索心仪景点一键导航
+            <img src="img/payhome.jpg"/>
         </div>
         <div class="panel">
             金额
