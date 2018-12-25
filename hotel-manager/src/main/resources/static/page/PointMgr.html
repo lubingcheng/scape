@@ -62,13 +62,23 @@
                 </Form-Item>
             </i-form>
         </Modal>
+        <Modal
+                v-model="modal2"
+                title="删除"
+                @on-ok="ok_del"
+                @on-cancel="cancel_del">
+            <p>删除不可恢复，是否确认删除？</p>
+        </Modal>
+
     </div>
     <script>
         var vue = new Vue({
             el: '#app',
+            curId:null,
             data: {
                 visible: false,
                 modal1: false,
+                modal2: false,
                 formItem:{
                     id:0,
                     name:"",
@@ -166,7 +176,9 @@
                                 },
                                 on: {
                                     click: () => {
-                                    this.remove(params.index)
+                                        var data = vue.data1[params.index];
+                                        vue.curId = data.id;
+                                        vue.modal2 = true;
                                 }
                             }
                             }, '删除')
@@ -239,6 +251,18 @@
                 },
                 cancel () {
                     this.$Message.info('取消更新！');
+                },
+                ok_del () {
+                    $.get('../deletePointById', this.formItem, function (result) {
+                        debugger;
+                        var data = result.data;
+                        if(data){
+                            this.$Message.info('删除成功！');
+                        }
+                    });
+                },
+                cancel_del () {
+                    this.$Message.info('取消删除！');
                 }
             }
         })
