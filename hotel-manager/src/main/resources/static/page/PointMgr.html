@@ -241,10 +241,13 @@
                     });
                 },
                 ok () {
-                    $.get('../updatePointById', this.formItem, function (result) {
+                    //var param = {"code":"1","id":"86","lat":"36.78691","lon":"114.425618","name":"weisheng","type":"4","voice":"asad"};
+                    //{"code":this.formItem.code,"id":this.formItem.id,""}
+                    //var data = JSON.stringify(param);
+                    $.post('../updatePointById', JSON.stringify(this.formItem), function (result) {
                         debugger;
                         var data = result.data;
-                        if(data){
+                        if(data.state == "success"){
                             this.$Message.info('更新成功！');
                         }
                     });

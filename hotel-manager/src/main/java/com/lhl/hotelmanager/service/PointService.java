@@ -13,4 +13,6 @@ import java.util.List;
 public interface PointService {
 
     List<Point> getAllPoint();
+
+    int updatePointById(Point point);
 }

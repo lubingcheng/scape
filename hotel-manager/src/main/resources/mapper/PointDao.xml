@@ -7,4 +7,16 @@
     <select id="getAllPoint"     resultType="com.lhl.hotelmanager.entity.Point"  >
         select * from point
     </select>
+    
+    <update id="updatePoint" parameterType="com.lhl.hotelmanager.entity.Point" >
+        update point
+        <set>
+            <if test="name != null">name=#{name},</if>
+            <if test="type != null">type=#{type},</if>
+            <if test="lat != null">lat=#{lat},</if>
+            <if test="lon != null">lon=#{lon},</if>
+            <if test="voice !=null">voice=#{voice}</if>
+        </set>
+        where id=#{id}
+    </update>
 </mapper>

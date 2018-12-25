@@ -24,4 +24,9 @@ public class PointServiceImpl implements PointService {
     public List<Point> getAllPoint() {
         return pointDao.getAllPoint();
     }
+
+    @Override
+    public int updatePointById(Point point) {
+        return pointDao.updatePoint(point);
+    }
 }
