@@ -58,7 +58,7 @@
                         render: (h, params) => {
                             var typename = "";
                             switch (params.row.type) {
-                                case '0':
+                                case 0:
                                     typename = '卫生间';
                                     break;
                                 default:
@@ -119,13 +119,13 @@
                 data1: [
                     {
                         name: 'John Brown',
-                        age: 18,
+                        type: 0,
                         address: 'New York No. 1 Lake Park',
                         date: '2016-10-03'
                     },
                     {
                         name: 'Jim Green',
-                        age: 24,
+                        type: 1,
                         address: 'London No. 1 Lake Park',
                         date: '2016-10-01'
                     },
