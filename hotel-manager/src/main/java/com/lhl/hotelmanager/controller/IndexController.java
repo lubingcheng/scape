@@ -10,7 +10,9 @@ import com.lhl.hotelmanager.service.PointService;
 import com.lhl.hotelmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -264,6 +266,18 @@ public class IndexController {
         return  points;
     }
 
+    @RequestMapping(value = "updatePointById" , method = RequestMethod.POST,consumes = "application/json")
+    @ResponseBody
+    public Object updatePointById(HttpServletRequest request, @RequestBody Point point){
+        Map<String,String> result = new HashMap<>();
+        int i = pointService.updatePointById(point);
+        if(i>0){
+            result.put("state","success");
+        }else {
+            result.put("state", "error");
+        }
+        return  JSONObject.toJSON(result);
+    }
 
     public static String sendPost(String url, String param) {
         PrintWriter out = null;
