@@ -63,7 +63,8 @@ public class IndexController {
     }
 
     @RequestMapping(value = {"/admin"})
-    public String admin(HttpServletRequest request){
+    public String admin(HttpServletRequest request) throws IOException {
+
         return  "admin";
     }
 
@@ -108,7 +109,10 @@ public class IndexController {
                 System.out.println(user.toString());
             }
 */
-
+            Properties properties = new Properties();
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(this.getClass().getResource("/").getPath() +"/config.properties"));
+            properties.load(bufferedReader);
+            String price = properties.getProperty("price");
 
             WXPay wxpay = new WXPay(config);
 
@@ -117,7 +121,7 @@ public class IndexController {
             data.put("out_trade_no", random);
             data.put("device_info", "");
             data.put("fee_type", "CNY");
-            data.put("total_fee", "100");
+            data.put("total_fee", price);
             data.put("spbill_create_ip", "123.12.12.123");
             data.put("notify_url", "http://pay.xixiawangluo.com/pay/payCallBack");
             data.put("trade_type", "JSAPI");  // 此处指定为扫码支付
