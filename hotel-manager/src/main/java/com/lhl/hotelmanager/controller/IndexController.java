@@ -40,7 +40,8 @@ public class IndexController {
         Properties properties = new Properties();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(this.getClass().getResource("/").getPath() +"/config.properties"));
         properties.load(bufferedReader);
-        price =Integer.parseInt(properties.getProperty("price"));
+        price = Integer.parseInt(properties.getProperty("price"));
+
         request.setAttribute("price",(float)price/100);
         String code =  request.getParameter("code");
         if(code!=null && code !="") {
@@ -170,6 +171,24 @@ public class IndexController {
 
         return "index";
     }
+
+    @RequestMapping(value = "getVoiceToken")
+    @ResponseBody
+    public Object  getVoiceToken(HttpServletRequest request) throws IOException {
+        Map<String,String> resultData = new HashMap<>();
+        Properties properties = new Properties();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(this.getClass().getResource("/").getPath() +"/config.properties"));
+        properties.load(bufferedReader);
+        String clientId = properties.getProperty("clientId");
+        String client_secret =  properties.getProperty("clientSecret");
+        String url = "https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id="+clientId+"&client_secret="+client_secret;
+        String result = sendPost(url, null);
+        Map<String,String> map = JSONObject.toJavaObject(JSONObject.parseObject(result),Map.class);
+        String token = map.get("access_token");
+        resultData.put("access_token",token);
+        return   JSONObject.toJSON(resultData);
+    }
+
 
     @RequestMapping(value = "payCallBack")
     @ResponseBody
