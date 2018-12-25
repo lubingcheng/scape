@@ -54,7 +54,7 @@
                     },
                     {
                         title: '类型',
-                        key: 'age'
+                        key: 'type'
                     },
                     {
                         title: '介绍',
@@ -131,8 +131,14 @@
         })
 
         function getPoint(){
-
+            $.get('../getAllPoint', {  }, function (result) {
+                var data = result.data;
+                debugger;
+                vue.data1 = data;
+            });
         }
+
+        getPoint();
     </script>
 </body>
 </html>
