@@ -20,7 +20,7 @@ public interface PointDao {
 
     int updatePoint(Point point);
 
-    int deletePoint(int id);
+    int deletePointById(int id);
 
 
 }

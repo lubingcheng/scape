@@ -279,6 +279,21 @@ public class IndexController {
         return  JSONObject.toJSON(result);
     }
 
+
+    @RequestMapping(value = "deletePointById" , method = RequestMethod.POST,consumes = "application/json")
+    @ResponseBody
+    public Object deletePointById(HttpServletRequest request, @RequestBody Point point){
+        Map<String,String> result = new HashMap<>();
+        int i = pointService.deletePointById(point.getId());
+        if(i>0){
+            result.put("state","success");
+        }else {
+            result.put("state", "error");
+        }
+        return  JSONObject.toJSON(result);
+    }
+
+
     public static String sendPost(String url, String param) {
         PrintWriter out = null;
         BufferedReader in = null;

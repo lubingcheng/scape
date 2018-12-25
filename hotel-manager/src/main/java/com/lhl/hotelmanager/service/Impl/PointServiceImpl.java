@@ -29,4 +29,11 @@ public class PointServiceImpl implements PointService {
     public int updatePointById(Point point) {
         return pointDao.updatePoint(point);
     }
+
+    @Override
+    public int deletePointById(int id) {
+        return pointDao.deletePointById(id);
+    }
+
+
 }

@@ -15,4 +15,6 @@ public interface PointService {
     List<Point> getAllPoint();
 
     int updatePointById(Point point);
+
+    int deletePointById(int id);
 }

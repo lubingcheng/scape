@@ -259,10 +259,10 @@
                     this.$Message.info('取消更新！');
                 },
                 ok_del () {
-                    $.get('../deletePointById', this.formItem, function (result) {
+                    $.post('../deletePointById', JSON.stringify({"id":this.curId}), function (result) {
                         debugger;
                         var data = result.data;
-                        if(data){
+                        if(data.state == "success"){
                             vue.$Message.info('删除成功！');
                         }
                     });
