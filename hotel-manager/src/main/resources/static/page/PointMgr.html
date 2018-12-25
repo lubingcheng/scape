@@ -26,8 +26,8 @@
 <body>
     <div id="app">
         <div class="tool">
-            <i-button type="primary">添加</i-button>
-            <i-button type="error">删除</i-button>
+            <i-button type="primary" disabled>添加</i-button>
+            <i-button type="error" disabled>删除</i-button>
         </div>
         <i-table ref="selection"  :columns="columns1" :data="data1"></i-table>
 
@@ -264,6 +264,13 @@
                         var data = result.data;
                         if(data.state == "success"){
                             vue.$Message.info('删除成功！');
+                            for(var i in vue.data1){
+                                if(vue.data1[i].id==vue.curId){
+                                    vue.data1.splice(i,1);
+                                    break;
+                                }
+                            }
+                            debugger;
                         }
                     });
                 },
