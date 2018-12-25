@@ -39,26 +39,26 @@
                 @on-cancel="cancel">
                 <i-form :model="formItem" :label-width="100">
                 <Form-Item label="名称">
-                    <i-Input v-model="formItem.name" placeholder="Enter something..."></i-Input>
+                    <i-Input v-model="formItem.name" placeholder="请输入名称"></i-Input>
                 </Form-Item>
                 <Form-Item label="类型">
                     <i-Select v-model="formItem.type">
-                        <i-Option value=0>景点</i-Option>
-                        <i-Option value=1>出入口</i-Option>
-                        <i-Option value=2>停车场</i-Option>
-                        <i-Option value=3>服务中心</i-Option>
-                        <i-Option value=4>卫生间</i-Option>
-                        <i-Option value=5>餐饮</i-Option>
+                        <i-Option value='0'>景点</i-Option>
+                        <i-Option value='1'>出入口</i-Option>
+                        <i-Option value='2'>停车场</i-Option>
+                        <i-Option value='3'>服务中心</i-Option>
+                        <i-Option value='4'>卫生间</i-Option>
+                        <i-Option value='5'>餐饮</i-Option>
                     </i-Select>
                 </Form-Item>
                 <Form-Item label="经度">
-                    <i-Input v-model="formItem.x" placeholder="Enter something..."></i-Input>
+                    <i-Input v-model="formItem.lon" placeholder="请输入经度"></i-Input>
                 </Form-Item>
                 <Form-Item label="纬度">
-                    <i-Input v-model="formItem.y" placeholder="Enter something..."></i-Input>
+                    <i-Input v-model="formItem.lat" placeholder="请输入纬度"></i-Input>
                 </Form-Item>
                 <Form-Item label="语音介绍">
-                    <i-Input v-model="formItem.txt" placeholder="Enter something..."></i-Input>
+                    <i-Input v-model="formItem.voice" type="textarea" :rows="4" placeholder="请输入语音介绍内容"></i-Input>
                 </Form-Item>
             </i-form>
         </Modal>
@@ -70,11 +70,12 @@
                 visible: false,
                 modal1: false,
                 formItem:{
+                    id:0,
                     name:"",
-                    type:0,
-                    x:0,
-                    y:0,
-                    txt:''
+                    type:'0',
+                    lon:0,
+                    lat:0,
+                    voice:''
                 },
                 columns1: [
                     {
@@ -152,7 +153,8 @@
                                     on: {
                                         click: () => {
                                             var data = vue.data1[params.index];
-                                            vue.formItem=data;
+                                            data.type = data.type.toString();
+                                            vue.formItem = data;
                                             vue.modal1 = true;
                                         }
                                     }
@@ -174,10 +176,12 @@
                 ],
                 data1: [
                     {
+                        id:0,
                         name: 'John Brown',
                         type: 0,
-                        address: 'New York No. 1 Lake Park',
-                        date: '2016-10-03'
+                        lon:111,
+                        lat:40,
+                        voice: '1122334',
                     },
                     {
                         name: 'Jim Green',
@@ -185,18 +189,6 @@
                         address: 'London No. 1 Lake Park',
                         date: '2016-10-01'
                     },
-                    {
-                        name: 'Joe Black',
-                        age: 30,
-                        address: 'Sydney No. 1 Lake Park',
-                        date: '2016-10-02'
-                    },
-                    {
-                        name: 'Jon Snow',
-                        age: 26,
-                        address: 'Ottawa No. 2 Lake Park',
-                        date: '2016-10-04'
-                    }
                 ]
             },
             methods: {
@@ -237,7 +229,13 @@
                     });
                 },
                 ok () {
-                    this.$Message.info('更新成功！');
+                    $.get('../updatePointById', this.formItem, function (result) {
+                        debugger;
+                        var data = result.data;
+                        if(data){
+                            this.$Message.info('更新成功！');
+                        }
+                    });
                 },
                 cancel () {
                     this.$Message.info('取消更新！');
