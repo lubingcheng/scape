@@ -4,7 +4,8 @@ spring:
   jmx:
     enabled: false
   datasource:
-     url: jdbc:mysql://localhost:3306/scape?useUnicode=true&characterEncoding=utf8
+     # url: jdbc:mysql://localhost:3306/scape?useUnicode=true&characterEncoding=utf8
+     url: jdbc:mysql://172.16.14.71:3306/scape?useUnicode=true&characterEncoding=utf8
      username: root
      password: 123456
      # password: ee32854224da154d
