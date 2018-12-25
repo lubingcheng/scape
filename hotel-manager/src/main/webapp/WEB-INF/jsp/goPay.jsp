@@ -52,7 +52,7 @@
             金额
         </div>
         <div class="panel" style="font-size:30px;">
-            1元
+            ${price}元
         </div>
         <div class="btnPay" onclick="goPay()">付费查看</div>
        <%-- <div id="openIdMs"></div>
