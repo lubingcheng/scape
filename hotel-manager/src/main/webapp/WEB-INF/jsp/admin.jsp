@@ -9,9 +9,58 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="/js/main.js"></script>
+    <link href="css/iview.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <script src="js/vue.min.js"></script>
+    <script src="js/iview.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
 </head>
 <body>
+<div id="app">
+    <div class="layout">
+        <Layout>
+            <Header>
+                <i-Menu mode="horizontal" theme="dark" active-name="1" @on-select="sysChange">
+                    <div class="layout-title">
+                        景区导航后台管理系统
+                    </div>
+                </i-Menu>
+            </Header>
+            <Layout>
+                <Sider hide-trigger >
+                    <i-Menu active-name="3" theme="dark" width="auto" open-names="['1']" @on-select="sysChange">
+                        <Menu-Item name="0">
+                            <Icon type="md-home"></Icon>
+                            景点管理
+                        </Menu-Item>
+                        <%--<Submenu name="0">--%>
+                            <%--<template slot="title">--%>
+                                <%--<Icon type="ios-keypad"></Icon>--%>
+                                <%--空间分布--%>
+                            <%--</template>--%>
+                            <%--<Menu-Item name="0-1">--%>
+                                <%--<Icon type="ios-keypad"></Icon>--%>
+                                <%--用地类型--%>
+                            <%--</Menu-Item>--%>
+                            <%--<Menu-Item name="0-2">--%>
+                                <%--<Icon type="ios-keypad"></Icon>--%>
+                                <%--用地状态--%>
+                            <%--</Menu-Item>--%>
+                        <%--</Submenu>--%>
+                    </i-Menu>
+                </Sider>
+                <i-Layout style="padding: 0 24px 24px;">
+                    <Content style="padding: 24px; min-Height: 280px; background: #fff;">
+                        <iframe id="cntIfm" src="page/map1.html"></iframe>
+                    </Content>
+                </i-Layout>
+            </Layout>
+        </Layout>
+    </div>
 
+</div>
+
+<script src="js/menu.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
