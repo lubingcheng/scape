@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>景区导航后台管理系统</title>
     <link href="css/iview.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
     <script src="js/vue.min.js"></script>
