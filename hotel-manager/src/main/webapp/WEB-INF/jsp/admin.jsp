@@ -31,7 +31,7 @@
                     <i-Menu active-name="3" theme="dark" width="auto" open-names="['0']" @on-select="sysChange">
                         <Menu-Item name="0">
                             <Icon type="md-home"></Icon>
-                            景点管理
+                            点位管理
                         </Menu-Item>
                         <%--<Submenu name="0">--%>
                             <%--<template slot="title">--%>

@@ -100,11 +100,13 @@
                     },
                     {
                         title: '名称',
-                        key: 'name'
+                        key: 'name',
+                        sortable: true
                     },
                     {
                         title: '类型',
                         key: 'type',
+                        sortable: true,
                         render: (h, params) => {
                             var typename = "";
                             switch (params.row.type) {
@@ -135,15 +137,18 @@
                     },
                     {
                         title: '经度',
-                        key: 'lon'
+                        key: 'lon',
+                        sortable: true
                     },
                     {
                         title: '纬度',
-                        key: 'lat'
+                        key: 'lat',
+                        sortable: true
                     },
                     {
                         title: '语音介绍',
-                        key: 'voice'
+                        key: 'voice',
+                        sortable: true
                     },
                     {
                         title: 'Action',
@@ -189,17 +194,16 @@
                 data1: [
                     {
                         id:0,
-                        name: 'John Brown',
+                        name: '...',
                         type: 0,
                         lon:111,
                         lat:40,
-                        voice: '1122334',
+                        voice: '...',
                     },
                     {
-                        name: 'Jim Green',
+                        name: '...',
                         type: 1,
-                        address: 'London No. 1 Lake Park',
-                        date: '2016-10-01'
+                        voice: '...',
                     },
                 ]
             },
@@ -245,10 +249,9 @@
                     //{"code":this.formItem.code,"id":this.formItem.id,""}
                     //var data = JSON.stringify(param);
                     $.post('../updatePointById', JSON.stringify(this.formItem), function (result) {
-                        debugger;
                         var data = result.data;
                         if(data.state == "success"){
-                            this.$Message.info('更新成功！');
+                            vue.$Message.info('更新成功！');
                         }
                     });
                 },
@@ -260,7 +263,7 @@
                         debugger;
                         var data = result.data;
                         if(data){
-                            this.$Message.info('删除成功！');
+                            vue.$Message.info('删除成功！');
                         }
                     });
                 },
