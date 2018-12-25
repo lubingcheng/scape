@@ -54,11 +54,31 @@
                     },
                     {
                         title: '类型',
-                        key: 'type'
+                        key: 'type',
+                        render: (h, params) => {
+                            var typename = "";
+                            switch (params.row.type) {
+                                case '0':
+                                    typename = '卫生间';
+                                    break;
+                                default:
+                                    typename = '景点';
+                                    break;
+                            }
+                            return h('div', typename);
+                        }
                     },
                     {
-                        title: '介绍',
-                        key: 'address'
+                        title: '经度',
+                        key: 'lon'
+                    },
+                    {
+                        title: '纬度',
+                        key: 'lat'
+                    },
+                    {
+                        title: '语音介绍',
+                        key: 'voice'
                     },
                     {
                         title: 'Action',
@@ -133,7 +153,6 @@
         function getPoint(){
             $.get('../getAllPoint', {  }, function (result) {
                 var data = result.data;
-                debugger;
                 vue.data1 = data;
             });
         }

@@ -28,7 +28,7 @@
             </Header>
             <Layout>
                 <Sider hide-trigger >
-                    <i-Menu active-name="3" theme="dark" width="auto" open-names="['1']" @on-select="sysChange">
+                    <i-Menu active-name="3" theme="dark" width="auto" open-names="['0']" @on-select="sysChange">
                         <Menu-Item name="0">
                             <Icon type="md-home"></Icon>
                             景点管理
@@ -49,9 +49,9 @@
                         <%--</Submenu>--%>
                     </i-Menu>
                 </Sider>
-                <i-Layout style="padding: 0 24px 24px;">
-                    <Content style="padding: 24px; min-Height: 280px; background: #fff;">
-                        <iframe id="cntIfm" src="page/map1.html"></iframe>
+                <i-Layout>
+                    <Content style="background: #fff;">
+                        <iframe id="cntIfm" src="page/PointMgr.html" style="height: 100%;overflow-y: auto;"></iframe>
                     </Content>
                 </i-Layout>
             </Layout>
